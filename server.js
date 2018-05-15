@@ -1,21 +1,25 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var exphbs = require('express-handlebars');
+var express = require("express");
+var bodyParser = require("body-parser");
+
+var PORT = process.env.PORT || 3306;
 
 var app = express();
-app.use(express.static(__dirname + '/public'));
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static("public"));
 
-app.use(methodOverride('_method'));
-app.engine('handlebars', exphbs({defualtLayout: 'main'}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('view engine', 'handlebars');
+app.use(bodyParser.json());
 
-var routes = require('./controllers/burgers_controller.js');
+var exphbs = require("express-handlebars");
 
-app.use('/',routes);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-var PORT = 3000;
-app.listen(PORT);
+var routes = require("./controllers/burgers_controller.js");
+
+app.use(routes);
+
+app.listen(PORT, function() {
+  console.log("Server listening on: http://localhost:" + PORT);
+});
