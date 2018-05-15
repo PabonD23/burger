@@ -18,8 +18,11 @@
   "homepage": "https://github.com/PabonD23/burger#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "deprecated": "0.0.2",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "mysql": "^2.15.0"
+    "method-override": "^2.3.10",
+    "mysql": "^2.15.0",
+    "npm": "^6.0.0"
   }
 }
